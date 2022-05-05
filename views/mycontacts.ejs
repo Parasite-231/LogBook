@@ -1,0 +1,25 @@
+<html lang="en">
+<%- include("./components/header.ejs") %>
+
+<body>
+  <%- include("./components/navbar.ejs") %>
+
+  <div class="blogs content">
+    <h2>All Contacts</h2>
+
+    <% if (contacts.length > 0) { %>
+      <% contacts.forEach(contact => { %>
+        <h3 class="title"><%= contact.name %></h3>
+        <p class="snippet"><%= contact.phone %></p>
+        <p class="snippet"><%= contact.address %></p>
+        <p class="snippet"><%= contact.createdAt %></p>
+      <% }) %>
+    <% } else { %>
+      <p>There are no contact to display...</p>
+    <% } %>
+    
+  </div>
+
+  <%- include("./components/footer.ejs") %>
+</body>
+</html>

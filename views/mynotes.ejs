@@ -1,0 +1,29 @@
+<html lang="en">
+<%- include("./components/header.ejs") %>
+
+<body>
+  <%- include("./components/navbar.ejs") %>
+
+  <h2 style="text-align: center;">My Notes</h2>
+  <div class="card">
+    <div class="card-header">
+      
+    </div>
+    <div class="card-body">
+      <% if (notes.length > 0) { %>
+        <% notes.forEach(note => { %>
+      <h5>Note ID:</h5><p> <%= note.id %></p>
+      <h5 class="card-title">Title:</h5><p> <%= note.title %></p>
+      <h5 class="card-text">Topic:</h5><p> <%= note.snippet %></p>
+      <h5 class="card-text">Added Date:</h5><p> <%= note.createdAt %></p>
+      <hr>
+      <% }) %>
+      <% } else { %>
+        <p>There are no blogs to display...</p>
+      <% } %>
+    </div>
+  </div>
+
+  <%- include("./components/footer.ejs") %>
+</body>
+</html>

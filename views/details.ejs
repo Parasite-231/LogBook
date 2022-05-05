@@ -1,0 +1,31 @@
+<html lang="en">
+<%- include("./components/header.ejs") %>
+
+<body>
+  <%- include("./components/navbar.ejs) %>
+
+  <div class="details content">
+    <h2><%= note.title %></h2>
+    <div class="content">
+      <p><%= note.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= note._id %>">delete</a>
+  </div>
+
+  <%- include("./components/footer.ejs") %>
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/mynotes/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>
